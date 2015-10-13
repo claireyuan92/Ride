@@ -32,7 +32,7 @@ CREATE TABLE NewStudent
  flight VARCHAR(256) NOT NULL REFERENCES Flight(flight_number),
  luggage_checked_number INTEGER NOT NULL,
  luggage_carryon_number INTEGER NOT NULL,
- bag_number INTEGER NOT NULL);
+ backpack_number INTEGER NOT NULL);
 
 CREATE TABLE Pickup
 (volunteer VARCHAR(256) NOT NULL REFERENCES Volunteer(email),
