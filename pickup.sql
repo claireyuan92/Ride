@@ -12,20 +12,22 @@ CREATE TABLE RegisteredUser
  undergraduate VARCHAR(256),
  company VARCHAR(256));
 
+
+CREATE TABLE Car
+(plate_number VARCHAR(256) NOT NULL PRIMARY KEY,
+ capacity Integer NOT NULL);
+
+CREATE TABLE Flight
+(flight_number VARCHAR(256) NOT NULL PRIMARY KEY,
+ arrival_time DATE NOT NULL,
+ terminal VARCHAR(256) NOT NULL);
+
 CREATE TABLE Volunteer
 (email VARCHAR(256) NOT NULL PRIMARY KEY REFERENCES RegisteredUser(email),
  available_time DATE NOT NULL,
  car_plate VARCHAR(256) NOT NULL REFERENCES Car(plate_number),
  driver_license VARCHAR(256) NOT NULL);
 
-CREATE TABLE Flight
-(flight_number VARCHAR(256) NOT NULL PRIMARY KEY,
- arrival time DATE NOT NULL,
- terminal VARCHAR(256) NOT NULL);
-
-CREATE TABLE Car
-(plate_number VARCHAR(256) NOT NULL PRIMARY KEY,
- capacity Integer NOT NULL);
 
 CREATE TABLE NewStudent
 (email VARCHAR(256) NOT NULL PRIMARY KEY REFERENCES RegisteredUser(email),
@@ -37,4 +39,4 @@ CREATE TABLE NewStudent
 CREATE TABLE Pickup
 (volunteer VARCHAR(256) NOT NULL REFERENCES Volunteer(email),
  newstudent VARCHAR(256) NOT NULL REFERENCES NewStudent(email),
- PRIMARY KEY(volunteer, newstudent))
+ PRIMARY KEY(volunteer, newstudent));
