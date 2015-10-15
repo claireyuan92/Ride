@@ -1,7 +1,11 @@
-Shuai Yuan:
+Shangru Huang: 
+Proposed project idea and wrote project description. Acquired access to DCSSA Airport Ride Data. Worked with Claire on Web Interface and implementation details. Worked with Shuai on sample table schemas.
 
-Shangru Huang:
+Claire Yuan: 
+Sketched E/R diagram and listed assumptions of the design. Modified on additional constraints of the schema. 
 
-Dino Xie:
+Chengen Xie: 
+Did an initial exploration of Django framework and possible approach in the detail implementation. Finished writing the third part of the milestone
 
-Claire Yuan:
+Shuai Yuan: 
+Write SQL source code to create table and test the database. Finished written the third part of the milestone
