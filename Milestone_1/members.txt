@@ -1,3 +1,5 @@
+MILESTONE_1
+
 Shangru Huang: 
 Proposed project idea and wrote project description. Acquired access to DCSSA Airport Ride Data. Worked with Claire on Web Interface and implementation details. Worked with Shuai on sample table schemas. Summed up instructor’s feedback.
 
