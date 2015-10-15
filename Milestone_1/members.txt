@@ -1,5 +1,5 @@
 Shangru Huang: 
-Proposed project idea and wrote project description. Acquired access to DCSSA Airport Ride Data. Worked with Claire on Web Interface and implementation details. Worked with Shuai on sample table schemas.
+Proposed project idea and wrote project description. Acquired access to DCSSA Airport Ride Data. Worked with Claire on Web Interface and implementation details. Worked with Shuai on sample table schemas. Summed up instructor’s feedback.
 
 Claire Yuan: 
 Sketched E/R diagram and listed assumptions of the design. Modified on additional constraints of the schema. 
