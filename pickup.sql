@@ -41,3 +41,4 @@ CREATE TABLE Pickup
 (volunteer VARCHAR(256) NOT NULL REFERENCES Volunteer(email),
  newstudent VARCHAR(256) NOT NULL REFERENCES NewStudent(email),
  PRIMARY KEY(volunteer, newstudent));
+
