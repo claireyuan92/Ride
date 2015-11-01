@@ -11,30 +11,50 @@ class RideUser(User):
         )
     # what is the primary key for User?
     gender = models.CharField(max_length=1,choices=GENDER_CHOICES,default='M')
-    age = models.IntegerField(max_length=2)
-    wechat =models.CharField(max_length=10)
-    phone = models.CharField(max_length=20)
+    age = models.IntegerField(null=True,blank=True)
+    wechat =models.CharField(max_length=10,null=True,blank=True)
+    phone = models.CharField(max_length=20,null=True,blank=True)
     citizenship = CountryField()
 
-    address_at_duke = models.CharField(max_length=200)
-    department_at_duke= models.CharField(max_length=200)
-    undergraduate_school = models.CharField(max_length=200)
-    company= models.CharField(max_length=200)
-"""
+    address_at_duke = models.CharField(max_length=200,null=True,blank=True)
+    department_at_duke= models.CharField(max_length=200,null=True,blank=True)
+    undergraduate_school = models.CharField(max_length=200,null=True,blank=True)
+    company= models.CharField(max_length=200,null=True,blank=True)
+    class Meta:
+        verbose_name="RideUser"
 
 class Flight(models.Model):
-    plate_number = models.CharField(max_length=256,primary_key=True)
-    capacity = models.IntegerField()
+    flight_number = models.CharField(max_length=256,primary_key=True)
+    arrival_time=models.DateTimeField(auto_now=False, auto_now_add=False)
+    terminal =models.CharField(max_length=20)
+    
+    def __str__(self):
+        return "Flight %s" % self.flight_number
 
 class NewStudent(RideUser):
+    #username=models.OneToOneField(User,primary_key=True)
     flight=models.ForeignKey(Flight)
     luggage_checked_num= models.IntegerField()
     luggage_carryon_num= models.IntegerField()
     backpack_num=models.IntegerField()
-    
-    
-class Volunteer(RideUser):
-    available_time = models.DurationField()
-    
+    class Meta:
+        verbose_name="NewStudent"
 
-"""
+class Car(models.Model):
+    plate_number=models.CharField(max_length=20, primary_key=True)
+    capacity= models.IntegerField()
+    def __str__(self):
+        return "Car %s" % self.plate_number
+
+class Volunteer(RideUser):
+    #username=models.OneToOneField(User,primary_key=True)
+    available_time = models.DurationField()
+    car_plate=models.ForeignKey(Car)
+    driver_license = models.CharField(max_length=50)
+    class Meta:
+        verbose_name="Volunteer"
+
+class Pickup(models.Model):
+    volunteer = models.ForeignKey(Volunteer)
+    newstudent = models.ForeignKey(NewStudent)
+    
