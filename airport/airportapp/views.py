@@ -21,7 +21,7 @@ def register(request):
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password1'],
                 email=form.cleaned_data['email'],
-                #car_plate = form.cleaned_data['carplate'],
+    			car_plate = form.cleaned_data['carplate'],
                 #available_time_start = form.cleaned_data['available_time_start'],
                 #available_time_end = form.cleaned_data['available_time_end'],
                 driver_license = form.cleaned_data['driver_license'],
