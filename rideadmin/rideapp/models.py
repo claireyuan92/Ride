@@ -32,11 +32,13 @@ class Flight(models.Model):
         return "Flight %s" % self.flight_number
 
 class NewStudent(RideUser):
-    #username=models.OneToOneField(User,primary_key=True)
+    
     flight=models.ForeignKey(Flight)
     luggage_checked_num= models.IntegerField()
     luggage_carryon_num= models.IntegerField()
     backpack_num=models.IntegerField()
+    picked=models.BooleanField(default=False)
+
     class Meta:
         verbose_name="NewStudent"
 
@@ -47,8 +49,8 @@ class Car(models.Model):
         return "Car %s" % self.plate_number
 
 class Volunteer(RideUser):
-    #username=models.OneToOneField(User,primary_key=True)
-    available_time = models.DurationField()
+
+    #available_time = models.DurationField()
     car_plate=models.ForeignKey(Car)
     driver_license = models.CharField(max_length=50)
     class Meta:
