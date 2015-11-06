@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from .forms import *
-
+from models import Volunteer
 
 @csrf_protect
 
@@ -17,10 +17,14 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(
+            user = Volunteer.objects.create_user(
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password1'],
-                email=form.cleaned_data['email']
+                email=form.cleaned_data['email'],
+                #car_plate = form.cleaned_data['carplate'],
+                #available_time_start = form.cleaned_data['available_time_start'],
+                #available_time_end = form.cleaned_data['available_time_end'],
+                driver_license = form.cleaned_data['driver_license'],
             )
             return HttpResponseRedirect('/register/success/')
     else:

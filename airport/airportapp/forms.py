@@ -3,6 +3,7 @@
 
 from django import forms
 from django.contrib.auth.models import User
+from models import *
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -16,12 +17,18 @@ class RegistrationForm(forms.Form):
         required=True, max_length=30, render_value=False)), label=_("Password"))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=dict(
         required=True, max_length=30, render_value=False)), label=_("Password (again)"))
+    #carplate =forms.CharField(widget=forms.TextInput(
+    #attrs=dict(required=True, max_length=30)), label=_("Car Plate Number"))
+    #available_time_start = forms.DateTimeField(label=_("Set your starting avalible time"))
+    #available_time_end = forms.DateTimeField(label=_("Set your ending avalible time"))
+    driver_license = forms.CharField(widget=forms.TextInput(
+        attrs=dict(required=True, max_length=50)), label=_("Enter your license number"))
 
     def clean_username(self):
         try:
-            user = User.objects.get(
+            user = Volunteer.objects.get(
                 username__iexact=self.cleaned_data['username'])
-        except User.DoesNotExist:
+        except Volunteer.DoesNotExist:
             return self.cleaned_data['username']
         raise forms.ValidationError(
             _("The username already exists. Please try another one."))

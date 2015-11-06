@@ -48,8 +48,8 @@ class Car(models.Model):
 
 class Volunteer(RideUser):
     #username=models.OneToOneField(User,primary_key=True)
-    available_time = models.DurationField()
-    car_plate=models.ForeignKey(Car)
+    #available_time = models.DurationField()
+    #car_plate=models.ForeignKey(Car)
     driver_license = models.CharField(max_length=50)
     class Meta:
         verbose_name="Volunteer"
