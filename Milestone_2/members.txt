@@ -1,10 +1,10 @@
-MILESTONE_1
+MILESTONE_2
 
 Shangru Huang: 
-Updated E/R diagram. Summed up TA/Instructor’s feedback. Wrote Milestone 2 report. Set up developing environment for Django and implemented admin app.
+Re-sketched E/R diagram. Summed up TA/Instructor’s feedback. Wrote Milestone 2 report. Set up developing environment for Django and implemented admin app.
 
 Claire Yuan: 
-Sketched E/R diagram and listed assumptions of the design. Modified on additional constraints of the schema. 
+Implemented table structure in python and improved the E/R diagram.
 
 Chengen Xie: 
 Implement UI designs and also the login and registration page
