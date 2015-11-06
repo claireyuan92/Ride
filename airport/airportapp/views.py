@@ -5,17 +5,18 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from .forms import *
-from models import Volunteer
+from models import *
+
 
 @csrf_protect
-
 def index(request):
     return render_to_response('index.html')
 
-def register(request):
+
+def volunteer_register(request):
 
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = v_RegistrationForm(request.POST)
         if form.is_valid():
             user = Volunteer.objects.create_user(
                 username=form.cleaned_data['username'],
@@ -24,11 +25,12 @@ def register(request):
                 #car_plate = form.cleaned_data['carplate'],
                 #available_time_start = form.cleaned_data['available_time_start'],
                 #available_time_end = form.cleaned_data['available_time_end'],
-                driver_license = form.cleaned_data['driver_license'],
+                driver_license=form.cleaned_data['driver_license'],
+                isVolunteer = True,
             )
             return HttpResponseRedirect('/register/success/')
     else:
-        form = RegistrationForm()
+        form = v_RegistrationForm()
     variables = RequestContext(request, {
         'form': form
     })
@@ -38,6 +40,40 @@ def register(request):
         variables,
     )
 
+def newstudent_register(request):
+
+    if request.method == 'POST':
+        form = s_RegistrationForm(request.POST)
+        if form.is_valid():
+
+            fnumber = form.cleaned_data['flight_number']
+
+            if not Flight.objects.filter(flight_number = fnumber):
+                newflight = Flight(flight_number = fnumber)
+                newflight.save()
+                print "save"
+            fnumberObject = Flight.objects.filter(flight_number = fnumber)[0]
+            user = NewStudent.objects.create_user(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password1'],
+                email=form.cleaned_data['email'],
+                #car_plate = form.cleaned_data['carplate'],
+                #available_time_start = form.cleaned_data['available_time_start'],
+                #available_time_end = form.cleaned_data['available_time_end'],
+                flight = fnumberObject,
+                isVolunteer = False,
+            )
+            return HttpResponseRedirect('/register/success/')
+    else:
+        form = s_RegistrationForm()
+    variables = RequestContext(request, {
+        'form': form
+    })
+
+    return render_to_response(
+        'registration/register.html',
+        variables,
+    )
 
 def register_success(request):
     return render_to_response(

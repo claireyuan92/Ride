@@ -15,6 +15,7 @@ class RideUser(User):
     wechat =models.CharField(max_length=10,null=True,blank=True)
     phone = models.CharField(max_length=20,null=True,blank=True)
     citizenship = CountryField()
+    isVolunteer = models.BooleanField(default = True)
 
     address_at_duke = models.CharField(max_length=200,null=True,blank=True)
     department_at_duke= models.CharField(max_length=200,null=True,blank=True)
@@ -25,18 +26,18 @@ class RideUser(User):
 
 class Flight(models.Model):
     flight_number = models.CharField(max_length=256,primary_key=True)
-    arrival_time=models.DateTimeField(auto_now=False, auto_now_add=False)
-    terminal =models.CharField(max_length=20)
+    #arrival_time=models.DateTimeField(auto_now=False, auto_now_add=False)
+    #terminal =models.CharField(max_length=20)
     
     def __str__(self):
         return "Flight %s" % self.flight_number
 
 class NewStudent(RideUser):
     #username=models.OneToOneField(User,primary_key=True)
-    flight=models.ForeignKey(Flight)
-    luggage_checked_num= models.IntegerField()
-    luggage_carryon_num= models.IntegerField()
-    backpack_num=models.IntegerField()
+    flight=models.ForeignKey('Flight')
+    #luggage_checked_num= models.IntegerField()
+    #luggage_carryon_num= models.IntegerField()
+    #backpack_num=models.IntegerField()
     class Meta:
         verbose_name="NewStudent"
 
