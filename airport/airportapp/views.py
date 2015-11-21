@@ -21,11 +21,17 @@ def volunteer_register(request):
     if request.method == 'POST':
         form = v_RegistrationForm(request.POST)
         if form.is_valid():
+            cplate = form.cleaned_data['carplate']
+            if not Car.objects.filter(plate_number= cplate):
+                newcar=Car(plate_number= cplate)
+                newcar.save();
+            carObject = Car.objects.filter(plate_number= cplate)[0]
+
             user = Volunteer.objects.create_user(
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password1'],
                 email=form.cleaned_data['email'],
-    			car_plate = form.cleaned_data['carplate'],
+    			car_plate = carObject,
                 #available_time_start = form.cleaned_data['available_time_start'],
                 #available_time_end = form.cleaned_data['available_time_end'],
                 driver_license=form.cleaned_data['driver_license'],

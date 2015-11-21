@@ -18,8 +18,8 @@ class v_RegistrationForm(forms.Form):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=dict(
         required=True, max_length=30, render_value=False)), label=_("Password (again)"))
 
-    # carplate =forms.CharField(widget=forms.TextInput(
-    # attrs=dict(required=True, max_length=30)), label=_("Car Plate Number"))
+    carplate =forms.CharField(widget=forms.TextInput(
+    attrs=dict(required=True, max_length=30)), label=_("Car Plate Number"))
     #available_time_start = forms.DateTimeField(label=_("Set your starting avalible time"))
     #available_time_end = forms.DateTimeField(label=_("Set your ending avalible time"))
     driver_license = forms.CharField(widget=forms.TextInput(
