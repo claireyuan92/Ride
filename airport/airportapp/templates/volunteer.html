@@ -5,6 +5,7 @@
     <b> Curren User </b>
     <p>{{current_user}}</p>
 
+<<<<<<< Updated upstream
 
     </div>
 
@@ -18,6 +19,17 @@
 
     {% endfor %}
 
+=======
+    <a>{{curr_volunteer}}</a>
+    {% for list in NS_list %}
+        <tr>
+            <td>{{ list.username }}</td>
+            <td><a href="">Edit</a></td> 
+            <td><a href="">Delete</a></td>
+         </tr>
+    {% endif %}
+{% endfor %}
+>>>>>>> Stashed changes
     </div>
     </section>
 {% endblock %}

@@ -118,4 +118,10 @@ def volunteerView(request):
         print i.username
     
     #return HttpResponse("Volunteer:" + str(curr_volunteer))
+<<<<<<< Updated upstream
     return render(request,'volunteer.html',{'current_user': curr_volunteer, 'new_student':new_student})
+=======
+    NS_list = NewStudent.objects.all;
+    return render(request, '/volunteer.html', {'object_list': NS_list})
+    #return render_to_response('/volunteer.html', )
+>>>>>>> Stashed changes

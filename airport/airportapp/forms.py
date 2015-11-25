@@ -17,6 +17,7 @@ class v_RegistrationForm(forms.Form):
         required=True, max_length=30, render_value=False)), label=_("Password"))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=dict(
         required=True, max_length=30, render_value=False)), label=_("Password (again)"))
+    
 
     carplate =forms.CharField(widget=forms.TextInput(
     attrs=dict(required=True, max_length=30)), label=_("Car Plate Number"))
