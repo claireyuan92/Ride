@@ -105,7 +105,7 @@ def login_success(request):
     print curr_volunteer.isVolunteer
 
     if curr_volunteer.isVolunteer:
-        return  HttpResponseRedirect('volunteer')
+        return  HttpResponseRedirect('/volunteer')
 
     return render_to_response(
         'home.html',
