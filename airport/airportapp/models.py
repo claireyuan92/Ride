@@ -10,6 +10,7 @@ class RideUser(User):
         ('M','Male'),
         )
     # what is the primary key for User?
+    name = models.CharField(max_length=10,null=True,blank=True)
     gender = models.CharField(max_length=1,choices=GENDER_CHOICES,default='M')
     age = models.IntegerField(null=True,blank=True)
     wechat =models.CharField(max_length=10,null=True,blank=True)
