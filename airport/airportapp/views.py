@@ -14,6 +14,7 @@ def index(request):
 
 def volunteerPage(request):
     curr_volunteer= Volunteer.objects.filter(username=request.user)
+    print curr_volunteer
     
 
 def volunteer_register(request):
@@ -98,7 +99,10 @@ def logout_page(request):
 
 @login_required
 def home(request):
+    curr_volunteer= RideUser.objects.filter(username=request.user)[0]
+    print request.user
+    print curr_volunteer.isVolunteer
+
     return render_to_response(
         'home.html',
-        {'user': request.user}
     )
