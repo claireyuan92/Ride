@@ -2,8 +2,21 @@
 {% block section %}
 <section id="login">
     <div class="container">
+    <b> Curren User </b>
+    <p>{{current_user}}</p>
 
-    <a>{{curr_volunteer}}</a>
+
+    </div>
+
+    <div class="container">
+    <c> New Student </c>
+    {% for element in new_student %}
+        <p> User Name</p>
+        <li>{{element.username}}</li>
+        <b> Flight</b>
+        <li>{{element.flight}}</li>
+
+    {% endfor %}
 
     </div>
     </section>

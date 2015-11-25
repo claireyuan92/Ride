@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from .forms import *
@@ -105,7 +105,7 @@ def login_success(request):
     print curr_volunteer.isVolunteer
 
     if curr_volunteer.isVolunteer:
-        return  HttpResponseRedirect('/volunteer')
+        return  HttpResponseRedirect('volunteer')
 
     return render_to_response(
         'home.html',
@@ -113,6 +113,9 @@ def login_success(request):
 
 def volunteerView(request):
     curr_volunteer= Volunteer.objects.filter(username=request.user)[0]
+    new_student =  NewStudent.objects.all()
+    for i in new_student:
+        print i.username
     
     #return HttpResponse("Volunteer:" + str(curr_volunteer))
-    return render_to_response('/volunteer.html')
+    return render(request,'volunteer.html',{'current_user': curr_volunteer, 'new_student':new_student})
