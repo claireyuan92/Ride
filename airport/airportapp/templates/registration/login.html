@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block section %}
+
 <section id="login">
     <div class="container">
 
@@ -8,15 +9,37 @@
     {% endif %}
     <form method="post" action=".">{% csrf_token %}
         <table border="0">
+            
             <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
             <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
         </table>
-        <input type="submit" value="Login" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
         <input type="hidden" name="next" value="/login_success" />
     </form>
     <a href="/volunteer_register/">Volunteer Register</a>
     <a href="/newstudent_register/">New Student Register</a>
     </div>
     </section>
-{% endblock %}
+    
+<!--
+  <div class="container">
 
+      <form class="form-signin" method="post" action=".">{% csrf_token %}
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="id_username" class="sr-only">Email address</label>
+        <input type="username" id="username" class="form-control" placeholder="Username" required autofocus>
+        <label for="id_password" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
+        <input type="hidden" name="next" value="/login_success" />
+      </form>
+
+    </div> 
+    -->
+
+    {% endblock %}

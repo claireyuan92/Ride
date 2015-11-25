@@ -114,4 +114,5 @@ def login_success(request):
 def volunteerView(request):
     curr_volunteer= Volunteer.objects.filter(username=request.user)[0]
     
-    return HttpResponse("Volunteer:" + str(curr_volunteer))
+    #return HttpResponse("Volunteer:" + str(curr_volunteer))
+    return render_to_response('/volunteer.html')
