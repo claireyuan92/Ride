@@ -35,27 +35,29 @@ class Flight(models.Model):
 class NewStudent(RideUser):
     #username=models.OneToOneField(User,primary_key=True)
     flight=models.ForeignKey('Flight')
+
     #luggage_checked_num= models.IntegerField()
     #luggage_carryon_num= models.IntegerField()
     #backpack_num=models.IntegerField()
+
     class Meta:
         verbose_name="NewStudent"
 
 class Car(models.Model):
     plate_number=models.CharField(max_length=20, primary_key=True)
-    capacity= models.IntegerField()
+    capacity= models.IntegerField(null=True)
     def __str__(self):
         return "Car %s" % self.plate_number
 
 class Volunteer(RideUser):
     #username=models.OneToOneField(User,primary_key=True)
     #available_time = models.DurationField()
-    #car_plate=models.ForeignKey(Car)
+    car_plate=models.ForeignKey('Car')
     driver_license = models.CharField(max_length=50)
     class Meta:
         verbose_name="Volunteer"
 
 class Pickup(models.Model):
-    volunteer = models.ForeignKey(Volunteer)
-    newstudent = models.ForeignKey(NewStudent)
+    volunteer = models.ForeignKey('Volunteer')
+    newstudent = models.ForeignKey('NewStudent')
     
