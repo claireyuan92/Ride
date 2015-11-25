@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from .forms import *
 from models import *
+from django.http import HttpResponse
 
 
 @csrf_protect
@@ -98,11 +99,19 @@ def logout_page(request):
 
 
 @login_required
-def home(request):
+def login_success(request):
     curr_volunteer= RideUser.objects.filter(username=request.user)[0]
     print request.user
     print curr_volunteer.isVolunteer
 
+    if curr_volunteer.isVolunteer:
+        return  HttpResponseRedirect('/volunteer')
+
     return render_to_response(
         'home.html',
     )
+
+def volunteerView(request):
+    curr_volunteer= Volunteer.objects.filter(username=request.user)[0]
+    
+    return HttpResponse("Volunteer:" + str(curr_volunteer))

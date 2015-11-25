@@ -11,5 +11,6 @@ urlpatterns = patterns('',
                        url(r'^volunteer_register/$', volunteer_register),
                        url(r'^newstudent_register/$', newstudent_register),
                        url(r'^register/success/$', register_success),
-                       url(r'^home/$', home),
+                       url(r'^login_success/$', login_success),
+                       url(r'^volunteer/$', volunteerView),
                        )
