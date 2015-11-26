@@ -12,8 +12,8 @@ class RideUser(User):
     # what is the primary key for User?
     name = models.CharField(max_length=10,null=True,blank=True)
     gender = models.CharField(max_length=1,choices=GENDER_CHOICES,default='M')
-    # age = models.IntegerField(null=True,blank=True)
-    wechat =models.CharField(max_length=50,null=True,blank=True)
+    age = models.IntegerField(null=True,blank=True)
+    wechat =models.CharField(max_length=10,null=True,blank=True)
     phone = models.CharField(max_length=20,null=True,blank=True)
     citizenship = CountryField()
     # a Boolean determine whehter the user is volunteer or new student
