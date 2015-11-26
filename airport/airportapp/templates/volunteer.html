@@ -1,36 +1,39 @@
 {% extends "base.html" %}
 {% block section %}
 <section id="login">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: separate;
+            border-spacing: 2px;
+            border-color: gray;
+        }
+    </style>
+
     <div class="container">
-    <b> Curren User </b>
-    <p>{{current_user}}</p>
-
-<<<<<<< Updated upstream
-
+        <b> Current User </b>
+        <p>{{current_user}}</p>
     </div>
-
     <div class="container">
-    <c> New Student </c>
-    {% for element in new_student %}
-        <p> User Name</p>
-        <li>{{element.username}}</li>
-        <b> Flight</b>
-        <li>{{element.flight}}</li>
-
-    {% endfor %}
-
-=======
-    <a>{{curr_volunteer}}</a>
-    {% for list in NS_list %}
+        <table>
         <tr>
-            <td>{{ list.username }}</td>
-            <td><a href="">Edit</a></td> 
-            <td><a href="">Delete</a></td>
-         </tr>
-    {% endif %}
-{% endfor %}
->>>>>>> Stashed changes
+            <th>User Name</th>
+            <th>Flight </th>
+        </tr>
+        {% for element in new_student %}
+        <tr>
+            <td>{{element.username}}</td>
+            <td>{{element.flight}}</td>
+        </tr>
+        {% endfor %}
+        </table>
     </div>
-    </section>
+    <form action="demo_form.asp">
+        <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+        <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+        <input type="submit" value="Submit">
+    </form>
+
+</section>
 {% endblock %}
 
