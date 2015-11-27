@@ -6,11 +6,13 @@ urlpatterns = patterns('',
                        url(r'^$', index),
                        url(r'^logout/$', logout_page),
                        # If user is not login it will redirect to login page
-                       url(r'^accounts/login/$',
-                           'django.contrib.auth.views.login'),
+                       url(r'^accounts/login/$',login),
+
+                           #'django.contrib.auth.views.login'),
                        url(r'^volunteer_register/$', volunteer_register),
                        url(r'^newstudent_register/$', newstudent_register),
                        url(r'^register/success/$', register_success),
                        url(r'^login_success/$', login_success),
                        url(r'^volunteer/$', volunteerView),
+                       url(r'^accounts/profile/$', login_success),
                        )

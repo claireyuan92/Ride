@@ -232,7 +232,7 @@ fieldset[disabled] .btn-xl.active {
 
 @media(min-width:768px) {
     .navbar-default {
-        padding: 10px 0;
+        padding: 5px 0;
         border: 0;
         background-color: 003366;
         -webkit-transition: padding .3s;

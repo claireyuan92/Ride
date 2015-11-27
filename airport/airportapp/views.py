@@ -2,11 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response, get_object_or_404, render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.template import RequestContext
 from .forms import *
 from models import *
-from django.http import HttpResponse
+from django.contrib.auth import (login as auth_login,  authenticate)
+from django.core.urlresolvers import reverse
 
 
 @csrf_protect
@@ -97,12 +98,27 @@ def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+def login(request):
+    _message = 'Please sign in'
+    if request.method == 'POST':
+        _username = request.POST['username']
+        _password = request.POST['password']
+        user = authenticate(username=_username, password=_password)
+        if user is not None:
+            if user.is_active:
+                auth_login(request, user)
+                return HttpResponseRedirect('/login_success')
+            else:
+                _message = 'Your account is not activated'
+        else:
+            _message = 'Invalid login, please try again.'
+    context = {'message': _message}
+    return render(request, 'registration/login.html', context)
+
 
 @login_required
 def login_success(request):
     curr_volunteer= RideUser.objects.filter(username=request.user)[0]
-    print request.user
-    print curr_volunteer.isVolunteer
 
     if curr_volunteer.isVolunteer:
         return  HttpResponseRedirect('/volunteer')
@@ -111,6 +127,7 @@ def login_success(request):
         'home.html',
     )
 
+@login_required
 def volunteerView(request):
     curr_volunteer= Volunteer.objects.filter(username=request.user)[0]
     new_student =  NewStudent.objects.all()
