@@ -138,3 +138,6 @@ def volunteerView(request):
 
     return render(request,'volunteer.html',{'current_user': curr_volunteer, 'new_student':new_student})
 
+
+#def submitPickup(request):
+

@@ -12,14 +12,18 @@
 
         <table class="table table-striped">
         <tr>
+            <th>select</th>
             <th>User Name</th>
             <th>Flight </th>
         </tr>
         {% for element in new_student %}
+        <div class="checkbox" >
         <tr>
+            <td><label><input type="checkbox" value={{element.username}}></label></td>
             <td>{{element.username}}</td>
             <td>{{element.flight}}</td>
         </tr>
+        </div>
         {% endfor %}
         </table>
         </div>
