@@ -1,21 +1,16 @@
-{% extends "base.html" %}
+{% extends "base-2.html" %}
 {% block section %}
 <section id="login">
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: separate;
-            border-spacing: 2px;
-            border-color: gray;
-        }
-    </style>
+    
 
     <div class="container">
+        <div class = "row">
+        <div class="col-md-6">
         <b> Current User </b>
         <p>{{current_user}}</p>
-    </div>
-    <div class="container">
-        <table>
+    
+
+        <table class="table table-striped">
         <tr>
             <th>User Name</th>
             <th>Flight </th>
@@ -27,12 +22,12 @@
         </tr>
         {% endfor %}
         </table>
+        </div>
     </div>
-    <form action="demo_form.asp">
-        <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
-        <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
-        <input type="submit" value="Submit">
-    </form>
+    </div>
+
+
+
 
 </section>
 {% endblock %}
