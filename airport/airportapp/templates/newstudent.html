@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block section %}
+<section id="login">
+    
+
+    <div class="container">
+        <div class = "row">
+        <div class="col-md-6">
+
+        <b> Current User is </b>
+        <p>{{current_user}}</p>
+    
+        <p>You have been picked up by this guy</p>
+        
+        <table class="table table-striped">
+        <tr>
+            
+            <th>User Name</th>
+            
+        </tr>
+        {% for element in pickup %}
+        <tr>
+            
+            <td>{{element.volunteer}}</td>
+            
+        </tr>
+        
+        {% endfor %}
+        
+        </table>
+       
+        </div>
+    </div>
+    </div>
+
+
+
+
+</section>
+{% endblock %}
+

@@ -123,22 +123,35 @@ def login_success(request):
     if curr_volunteer.isVolunteer:
         return  HttpResponseRedirect('/volunteer')
 
-    return render_to_response(
-        'home.html',
-    )
+    else:
+    	return HttpResponseRedirect('/newstudent')
 
 @login_required
 def volunteerView(request):
-    curr_volunteer= Volunteer.objects.filter(username=request.user)[0]
+    curr_user= Volunteer.objects.filter(username=request.user)[0]
     new_student =  NewStudent.objects.all()
-    
-    #return HttpResponse("Volunteer:" + str(curr_volunteer))
 
-    return render(request,'volunteer.html',{'current_user': curr_volunteer, 'new_student':new_student})
+    return render(request,'volunteer.html',{'current_user': curr_user, 'new_student':new_student})
+
+@login_required
+def newstudentView(request):
+    curr_user= NewStudent.objects.filter(username=request.user)[0]
+    pickupObject =  Pickup.objects.filter(newstudent = curr_user)
+
+    return render(request,'newstudent.html',{'current_user': curr_user, 'pickup':pickupObject})
 
 
+@login_required
 def submitPickup(request):
+	curr_volunteer= Volunteer.objects.filter(username=request.user)[0]
 	checked = request.POST.getlist("checkbox")
-	print checked
+
+	if checked is not None:
+		for i in checked:
+			print str(i)
+			print type(curr_volunteer)
+			ns = NewStudent.objects.filter(username = str(i))[0]
+			print type(ns)
+			Pickup.objects.create(volunteer = curr_volunteer, newstudent = ns )
 
 	return HttpResponse("submit sucess")
