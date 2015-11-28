@@ -131,13 +131,14 @@ def login_success(request):
 def volunteerView(request):
     curr_volunteer= Volunteer.objects.filter(username=request.user)[0]
     new_student =  NewStudent.objects.all()
-    for i in new_student:
-        print i.username
     
     #return HttpResponse("Volunteer:" + str(curr_volunteer))
 
     return render(request,'volunteer.html',{'current_user': curr_volunteer, 'new_student':new_student})
 
 
-#def submitPickup(request):
+def submitPickup(request):
+	checked = request.POST.getlist("checkbox")
+	print checked
 
+	return HttpResponse("submit sucess")
