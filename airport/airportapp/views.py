@@ -9,6 +9,13 @@ from models import *
 from django.contrib.auth import (login as auth_login,  authenticate)
 from django.core.urlresolvers import reverse
 
+from weibo import APIClient
+
+APP_KEY = '1234567' # app key
+APP_SECRET = 'abcdefghijklmn' # app secret
+CALLBACK_URL = 'http://www.example.com/callback' # callback url
+
+
 
 @csrf_protect
 def index(request):
@@ -158,3 +165,23 @@ def submitPickup(request):
 			Pickup.objects.create(volunteer = curr_volunteer, newstudent = ns )
 
 	return HttpResponse("submit sucess")
+
+def weibologin(request):
+	client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
+	url = client.get_authorize_url()
+	
+	"""
+	code = your.web.framework.request.get('code')
+	client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
+	r = client.request_access_token(code)
+	access_token = r.access_token # token abc123xyz456
+	expires_in = r.expires_in  #token expire http://zh.wikipedia.org/wiki/UNIX%E6%97%B6%E9%97%B4
+	# TODO: save access token
+	client.set_access_token(access_token, expires_in)
+
+	print client.statuses.user_timeline.get()
+	"""
+	return HttpResponseRedirect(url)
+	
+	#print client.statuses.update.post(status=u'OAuth 2.0 send weibo')
+	#print client.statuses.upload.post(status=u'OAuth 2.0figure weibo', pic=open('/Users/michael/test.png'))
