@@ -48,14 +48,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="/">AirportRide</a>
+                <a class="navbar-brand page-scroll" href="/login_success">AirportRide</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="dropdown-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Register <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/newstudent_register">New Student</a></li>
+                            <li><a href="/volunteer_register">Volunteer</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="/logout">logout</a>

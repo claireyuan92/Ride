@@ -37,6 +37,9 @@ class Flight(models.Model):
 class NewStudent(RideUser):
     #username=models.OneToOneField(User,primary_key=True)
     flight=models.ForeignKey('Flight')
+    #a bollean detemine whether a student has been pick up or not
+    #hasPickup = False;
+
 
     #luggage_checked_num= models.IntegerField()
     #luggage_carryon_num= models.IntegerField()

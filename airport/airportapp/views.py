@@ -118,13 +118,16 @@ def login(request):
 
 @login_required
 def login_success(request):
-    curr_volunteer= RideUser.objects.filter(username=request.user)[0]
 
-    if curr_volunteer.isVolunteer:
-        return  HttpResponseRedirect('/volunteer')
+	
+    curr_user= RideUser.objects.filter(username=request.user)[0]
 
+    if curr_user.isVolunteer:
+    	return HttpResponseRedirect('/volunteer')
     else:
-    	return HttpResponseRedirect('/newstudent')
+		return HttpResponseRedirect('/newstudent')
+		
+
 
 @login_required
 def volunteerView(request):
