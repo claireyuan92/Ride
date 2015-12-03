@@ -139,7 +139,7 @@ def login_success(request):
 @login_required
 def volunteerView(request):
     curr_user= Volunteer.objects.filter(username=request.user)[0]
-    new_student =  NewStudent.objects.all()
+    new_student =  NewStudent.objects.filter(hasPickup = False)
 
     return render(request,'volunteer.html',{'current_user': curr_user, 'new_student':new_student})
 
@@ -158,15 +158,16 @@ def submitPickup(request):
 
 	if checked is not None:
 		for i in checked:
-			print str(i)
+
 			print type(curr_volunteer)
-			ns = NewStudent.objects.filter(username = str(i))[0]
-			print type(ns)
+			ns = NewStudent.objects.get(username = str(i))
+			ns.hasPickup = True
+			ns.save()
 			Pickup.objects.create(volunteer = curr_volunteer, newstudent = ns )
 
 	return HttpResponse("submit sucess")
 
-    
+
 '''
 def weibologin(request):
 	client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
