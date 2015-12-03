@@ -7,7 +7,10 @@ urlpatterns = patterns('',
                        url(r'^logout/$', logout_page),
                        # If user is not login it will redirect to login page
                        url(r'^accounts/login/$',login),
+<<<<<<< HEAD
                        #url(r'^accounts/weibologin/$',weibologin),
+=======
+>>>>>>> parent of 03f9265... uncompleted weibo login
 
                            #'django.contrib.auth.views.login'),
                        url(r'^volunteer_register/$', volunteer_register),
