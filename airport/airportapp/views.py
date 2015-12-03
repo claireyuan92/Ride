@@ -9,7 +9,7 @@ from models import *
 from django.contrib.auth import (login as auth_login,  authenticate)
 from django.core.urlresolvers import reverse
 
-from weibo import APIClient
+#from weibo import APIClient
 
 APP_KEY = '1234567' # app key
 APP_SECRET = 'abcdefghijklmn' # app secret
@@ -166,6 +166,8 @@ def submitPickup(request):
 
 	return HttpResponse("submit sucess")
 
+    
+'''
 def weibologin(request):
 	client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
 	url = client.get_authorize_url()
@@ -185,3 +187,4 @@ def weibologin(request):
 	
 	#print client.statuses.update.post(status=u'OAuth 2.0 send weibo')
 	#print client.statuses.upload.post(status=u'OAuth 2.0figure weibo', pic=open('/Users/michael/test.png'))
+'''
