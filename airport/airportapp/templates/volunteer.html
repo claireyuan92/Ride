@@ -5,7 +5,7 @@
 
     <div class="container">
         <div class = "row">
-        <div class="col-md-6">
+        <div class="col-md-8">
 
         <div class="panel panel-default">
         <div class="panel-heading">Current User</div>
@@ -23,7 +23,8 @@
             <tr>
                 <th>User Name</th>
                 <th>Flight </th>
-                <th>Estimate Arrival Time</th>
+                <th>Arrival Time</th>
+                <th>Arrival Date</th>
                 <th>Email </th>
             </tr>
             {% for element in picked %}
@@ -32,6 +33,7 @@
                 <td>{{element.newstudent.username}}</td>
                 <td>{{element.newstudent.flight}}</td>
                 <td>{{element.newstudent.arrival}}</td>
+                <td>{{element.newstudent.arrival_date}}</td>
                 <td>{{element.newstudent.email}}</td>
             </tr>
             
@@ -52,7 +54,8 @@
                 <th>select</th>
                 <th>User Name</th>
                 <th>Flight </th>
-                <th>Estimate Arrival Time</th>
+                <th>Arrival Time</th>
+                <th>Arrival Date</th>
             </tr>
             {% for element in new_student %}
             <div class="checkbox" >
@@ -61,6 +64,7 @@
                 <td>{{element.username}}</td>
                 <td>{{element.flight}}</td>
                 <td>{{element.arrival}}</td>
+                <td>{{element.newstudent.arrival_date}}</td>
             </tr>
             </div>
             {% endfor %}
