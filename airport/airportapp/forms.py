@@ -78,3 +78,6 @@ class s_RegistrationForm(forms.Form):
                     _("The two password fields did not match."))
         return self.cleaned_data
 
+class ImageUploadForm(forms.Form):
+    """Image upload form."""
+    image = forms.ImageField()

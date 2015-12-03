@@ -160,7 +160,7 @@ def volunteerView(request):
 
 @login_required
 def newstudentView(request):
-    curr_user= NewStudent.objects.filter(username=request.user)[0]
+    curr_user= NewStudent.objects.get(username=request.user)
     pickupObject =  Pickup.objects.filter(newstudent = curr_user)
 
     return render(request,'newstudent.html',{'current_user': curr_user, 'pickup':pickupObject})
@@ -183,7 +183,15 @@ def submitPickup(request):
 	return HttpResponseRedirect('/volunteer')
 
 
-
+def upload_pic(request):
+	curr_user= NewStudent.objects.get(username=request.user)
+	if request.method == 'POST':
+		form = ImageUploadForm(request.POST, request.FILES)
+		if form.is_valid():
+			curr_user.model_pic = form.cleaned_data['image']
+			curr_user.save()
+			return HttpResponse('image upload success')
+	return HttpResponseForbidden('allowed only via POST')
 
 '''
 def weibologin(request):
