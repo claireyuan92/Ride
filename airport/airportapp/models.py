@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from countryfield import CountryField
+import datetime
 
 # Create your models here.
 
@@ -39,9 +40,9 @@ class NewStudent(RideUser):
     #username=models.OneToOneField(User,primary_key=True)
     flight=models.ForeignKey('Flight')
     #a bollean detemine whether a student has been pick up or not
-    hasPickup = models.BooleanField(default = False);
+    hasPickup = models.BooleanField(default = False)
     arrival = models.TimeField(null=True)
-
+    arrival_date = models.DateField(default = datetime.date.today)
 
     #luggage_checked_num= models.IntegerField()
     #luggage_carryon_num= models.IntegerField()

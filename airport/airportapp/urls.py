@@ -11,6 +11,7 @@ urlpatterns = patterns('',
                        #url(r'^accounts/weibologin/$',weibologin),
 
 
+
                            #'django.contrib.auth.views.login'),
                        url(r'^volunteer_register/$', volunteer_register),
                        url(r'^newstudent_register/$', newstudent_register),
