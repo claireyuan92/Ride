@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from countryfield import CountryField
+
 # Create your models here.
 
 
@@ -32,13 +33,14 @@ class Flight(models.Model):
     #terminal =models.CharField(max_length=20)
     
     def __str__(self):
-        return "Flight %s" % self.flight_number
+        return self.flight_number
 
 class NewStudent(RideUser):
     #username=models.OneToOneField(User,primary_key=True)
     flight=models.ForeignKey('Flight')
     #a bollean detemine whether a student has been pick up or not
     hasPickup = models.BooleanField(default = False);
+    arrival = models.TimeField(null=True)
 
 
     #luggage_checked_num= models.IntegerField()

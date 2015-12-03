@@ -8,6 +8,7 @@ from .forms import *
 from models import *
 from django.contrib.auth import (login as auth_login,  authenticate)
 from django.core.urlresolvers import reverse
+from pyflightdata import *
 
 #from weibo import APIClient
 
@@ -139,6 +140,18 @@ def login_success(request):
 def volunteerView(request):
     curr_user= Volunteer.objects.filter(username=request.user)[0]
     new_student =  NewStudent.objects.filter(hasPickup = False)
+
+    for i in new_student:
+		print i.flight
+		print repr(str(i.flight))
+		try:
+			arrival = get_history_by_flight_number(str(i.flight))[0]['sta']
+			
+			print arrival
+			i.arrival = arrival
+			i.save()
+		except:
+			print 'error'
 
     return render(request,'volunteer.html',{'current_user': curr_user, 'new_student':new_student})
 

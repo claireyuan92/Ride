@@ -23,6 +23,7 @@
                 <th>select</th>
                 <th>User Name</th>
                 <th>Flight </th>
+                <th>Estimate Arrival Time</th>
                 <th>Email </th>
             </tr>
             {% for element in new_student %}
@@ -31,6 +32,7 @@
                 <td><label><input type="checkbox" name = "checkbox" value={{element.username}}></label></td>
                 <td>{{element.username}}</td>
                 <td>{{element.flight}}</td>
+                <td>{{element.arrival}}</td>
                 <td>{{element.email}}</td>
             </tr>
             </div>
