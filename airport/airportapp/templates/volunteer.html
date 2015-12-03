@@ -47,7 +47,7 @@
             <div class="panel-heading">Select students you want to pick up</div>
 
             
-            <table class="table ">
+            <table class="table" >
             <tr>
                 <th>select</th>
                 <th>User Name</th>
@@ -58,7 +58,7 @@
             <div class="checkbox" >
             <tr>
                 <td><label><input type="checkbox" name = "checkbox" value={{element.username}}></label></td>
-                <td>{{element.username}}</td>
+                <td data-field="name" data-sortable="true">{{element.username}}</td>
                 <td>{{element.flight}}</td>
                 <td>{{element.arrival}}</td>
             </tr>
@@ -78,5 +78,8 @@
 
 
 </section>
+
+
+
 {% endblock %}
 

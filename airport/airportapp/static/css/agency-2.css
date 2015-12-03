@@ -871,3 +871,11 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #003366;
 }
+
+.bootstrap-table .table > tbody > tr.groupBy {
+
+}
+
+.bootstrap-table .table > tbody > tr.groupBy.expanded {
+    
+}
