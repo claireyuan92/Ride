@@ -7,28 +7,38 @@
         <div class = "row">
         <div class="col-md-6">
 
-        <b> Current User </b>
-        <p>{{current_user}}</p>
-    
-        <p>Select students you want to pick up</p>
-        <form method = "POST" action = "/submitPickup">{% csrf_token %}
-        <table class="table table-striped">
-        <tr>
-            <th>select</th>
-            <th>User Name</th>
-            <th>Flight </th>
-        </tr>
-        {% for element in new_student %}
-        <div class="checkbox" >
-        <tr>
-            <td><label><input type="checkbox" name = "checkbox" value={{element.username}}></label></td>
-            <td>{{element.username}}</td>
-            <td>{{element.flight}}</td>
-        </tr>
+        <div class="panel panel-default">
+        <div class="panel-heading">Current User</div>
+        <div class="panel-body">{{current_user}}</div>
         </div>
-        {% endfor %}
-        
-        </table>
+            
+            <form method = "POST" action = "/submitPickup">{% csrf_token %}
+            <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Select students you want to pick up</div>
+
+            
+            <table class="table ">
+            <tr>
+                <th>select</th>
+                <th>User Name</th>
+                <th>Flight </th>
+                <th>Email </th>
+            </tr>
+            {% for element in new_student %}
+            <div class="checkbox" >
+            <tr>
+                <td><label><input type="checkbox" name = "checkbox" value={{element.username}}></label></td>
+                <td>{{element.username}}</td>
+                <td>{{element.flight}}</td>
+                <td>{{element.email}}</td>
+            </tr>
+            </div>
+            {% endfor %}
+            
+            </table>
+            </div>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">submit</button>
         </form>
         </div>

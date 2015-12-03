@@ -95,9 +95,8 @@ def newstudent_register(request):
     )
 
 def register_success(request):
-    print request.user
-    return render_to_response(
-        'registration/success.html',
+    return HttpResponseRedirect(
+        '/login_success',
     )
 
 
