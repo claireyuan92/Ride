@@ -11,6 +11,35 @@
         <div class="panel-heading">Current User</div>
         <div class="panel-body">{{current_user}}</div>
         </div>
+
+
+              
+            <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">You have selected to pick up:</div>
+
+            
+            <table class="table ">
+            <tr>
+                <th>User Name</th>
+                <th>Flight </th>
+                <th>Estimate Arrival Time</th>
+                <th>Email </th>
+            </tr>
+            {% for element in picked %}
+            
+            <tr>
+                <td>{{element.newstudent.username}}</td>
+                <td>{{element.newstudent.flight}}</td>
+                <td>{{element.newstudent.arrival}}</td>
+                <td>{{element.newstudent.email}}</td>
+            </tr>
+            
+            {% endfor %}
+            
+            </table>
+            </div>
+
             
             <form method = "POST" action = "/submitPickup">{% csrf_token %}
             <div class="panel panel-default">
@@ -24,7 +53,6 @@
                 <th>User Name</th>
                 <th>Flight </th>
                 <th>Estimate Arrival Time</th>
-                <th>Email </th>
             </tr>
             {% for element in new_student %}
             <div class="checkbox" >
@@ -33,7 +61,6 @@
                 <td>{{element.username}}</td>
                 <td>{{element.flight}}</td>
                 <td>{{element.arrival}}</td>
-                <td>{{element.email}}</td>
             </tr>
             </div>
             {% endfor %}

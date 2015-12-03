@@ -7,7 +7,11 @@ urlpatterns = patterns('',
                        url(r'^logout/$', logout_page),
                        # If user is not login it will redirect to login page
                        url(r'^accounts/login/$',login),
+
                        #url(r'^accounts/weibologin/$',weibologin),
+
+
+
                            #'django.contrib.auth.views.login'),
                        url(r'^volunteer_register/$', volunteer_register),
                        url(r'^newstudent_register/$', newstudent_register),

@@ -12,9 +12,10 @@ from pyflightdata import *
 
 #from weibo import APIClient
 
-APP_KEY = '1234567' # app key
+'''APP_KEY = '1234567' # app key
 APP_SECRET = 'abcdefghijklmn' # app secret
 CALLBACK_URL = 'http://www.example.com/callback' # callback url
+'''
 
 
 @csrf_protect
@@ -140,6 +141,8 @@ def login_success(request):
 def volunteerView(request):
     curr_user= Volunteer.objects.filter(username=request.user)[0]
     new_student =  NewStudent.objects.filter(hasPickup = False)
+    picked = Pickup.objects.filter(volunteer = curr_user)
+
 
     for i in new_student:
 		print i.flight
@@ -153,7 +156,7 @@ def volunteerView(request):
 		except:
 			print 'error'
 
-    return render(request,'volunteer.html',{'current_user': curr_user, 'new_student':new_student})
+    return render(request,'volunteer.html',{'current_user': curr_user, 'new_student':new_student, 'picked':picked})
 
 @login_required
 def newstudentView(request):
@@ -177,7 +180,8 @@ def submitPickup(request):
 			ns.save()
 			Pickup.objects.create(volunteer = curr_volunteer, newstudent = ns )
 
-	return HttpResponse("submit sucess")
+	return HttpResponseRedirect('/volunteer')
+
 
 
 
