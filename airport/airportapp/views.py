@@ -10,16 +10,13 @@ from django.contrib.auth import (login as auth_login,  authenticate)
 from django.core.urlresolvers import reverse
 from pyflightdata import *
 
-<<<<<<< HEAD
+
 #from weibo import APIClient
 
-APP_KEY = '1234567' # app key
+'''APP_KEY = '1234567' # app key
 APP_SECRET = 'abcdefghijklmn' # app secret
 CALLBACK_URL = 'http://www.example.com/callback' # callback url
-
-
-=======
->>>>>>> parent of 03f9265... uncompleted weibo login
+'''
 
 @csrf_protect
 def index(request):
@@ -181,7 +178,7 @@ def submitPickup(request):
 			Pickup.objects.create(volunteer = curr_volunteer, newstudent = ns )
 
 	return HttpResponse("submit sucess")
-<<<<<<< HEAD
+
 
 
 '''
@@ -205,5 +202,4 @@ def weibologin(request):
 	#print client.statuses.update.post(status=u'OAuth 2.0 send weibo')
 	#print client.statuses.upload.post(status=u'OAuth 2.0figure weibo', pic=open('/Users/michael/test.png'))
 '''
-=======
->>>>>>> parent of 03f9265... uncompleted weibo login
+
