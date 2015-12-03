@@ -13,18 +13,18 @@ class RideUser(User):
         )
     # what is the primary key for User?
     name = models.CharField(max_length=10,null=True,blank=True)
-    #gender = models.CharField(max_length=1,choices=GENDER_CHOICES,default='M')
+    gender = models.CharField(max_length=1,choices=GENDER_CHOICES,default='M')
     #age = models.IntegerField(null=True,blank=True)
-    #wechat =models.CharField(max_length=10,null=True,blank=True)
-    #phone = models.CharField(max_length=20,null=True,blank=True)
+    wechat =models.CharField(max_length=10,null=True,blank=True)
+    phone = models.CharField(max_length=20,null=True,blank=True)
     #citizenship = CountryField()
     # a Boolean determine whehter the user is volunteer or new student
     isVolunteer = models.BooleanField(default = True)
 
-    #address_at_duke = models.CharField(max_length=200,null=True,blank=True)
-    #department_at_duke= models.CharField(max_length=200,null=True,blank=True)
-    #undergraduate_school = models.CharField(max_length=200,null=True,blank=True)
-    #company= models.CharField(max_length=200,null=True,blank=True)
+    address_at_duke = models.CharField(max_length=200,null=True,blank=True)
+    department_at_duke= models.CharField(max_length=200,null=True,blank=True)
+    undergraduate_school = models.CharField(max_length=200,null=True,blank=True)
+    company= models.CharField(max_length=200,null=True,blank=True)
     class Meta:
         verbose_name="RideUser"
 

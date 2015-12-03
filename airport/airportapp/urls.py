@@ -20,5 +20,8 @@ urlpatterns = patterns('',
                        url(r'^volunteer/$', volunteerView),
                        url(r'^newstudent/$', newstudentView),
                        url(r'^accounts/profile/$', login_success),
-                       url(r'^submitPickup$', submitPickup),
+                       url(r'^submitPickup/$', submitPickup),
+                      url(r'^upload/$', upload_pic),
                        )
+
+
