@@ -5,6 +5,9 @@ from django import forms
 from django.contrib.auth.models import User
 from models import *
 from django.utils.translation import ugettext_lazy as _
+import datetime
+from django.forms.extras.widgets import SelectDateWidget
+from django.forms import ModelForm, Form
 
 
 class v_RegistrationForm(forms.Form):
@@ -55,6 +58,8 @@ class s_RegistrationForm(forms.Form):
         required=True, max_length=30, render_value=False)), label=_("Password (again)"))
     flight_number = forms.CharField(widget=forms.TextInput(
         attrs=dict(required=True, max_length=30)), label=_("Flight number"))
+    arrival_date = forms.DateField(widget=SelectDateWidget)
+    #arrival_date = forms.DateField(initial=datetime.date.today, label = _("Arrival Date"))
     
 
     def clean_username(self):
