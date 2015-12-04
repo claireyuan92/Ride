@@ -9,3 +9,4 @@ pyflightdata==0.3
 request==0.0.2
 requests==2.8.1
 static3==0.6.1
+whitenoise==2.0.6
