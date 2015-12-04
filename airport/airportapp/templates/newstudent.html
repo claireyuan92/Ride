@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block section %}
+<section id="login">
+    
+
+    <div class="container">
+        <div class = "row">
+        <div class="col-md-6">
+
+        <div class="panel panel-default">
+        <div class="panel-heading">Current User</div>
+        <div class="panel-body">{{current_user}}</div>
+        </div>
+        
+        <div class="panel panel-default">
+        <div class="panel-heading">You have been picked up by</div>
+        
+        <table class="table">
+        <tr>
+            
+            <th>User Name</th>
+            <th>Email</th>
+            
+        </tr>
+        {% for element in pickup %}
+        <tr>
+            
+            <td>{{element.volunteer}}</td>
+            <td>{{element.volunteer.email}}</td>
+            
+        </tr>
+        
+        {% endfor %}
+        
+        </table>
+       
+        </div>
+    </div>
+    </div>
+
+
+
+
+</section>
+{% endblock %}
+
