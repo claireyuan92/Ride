@@ -1,1 +1,4 @@
 airport/db.sqlite3
+venv
+*.pyc
+staticfiles
